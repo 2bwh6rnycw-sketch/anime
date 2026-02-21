@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-panel">
+
+   <div class="filters">
+    <button class="filter-btn active" data-filter="list">список</button>
+    <button class="filter-btn" data-filter="watched">просмотрено</button>
+</div>
+
+</div>
+
+
+<div class="anime-container">
+
+    <div class="anime-card" data-id="aot">
+        <a href="https://animego.me/anime/adskiy-ray-2-2900" target="_blank">
+            <h2 class="anime-title">адский рай</h2>
+        </a>
+        <img src="https://media1.tenor.com/m/_sTkTraXVHoAAAAC/anime-jigokuraku.gif">
+        <button class="watch-btn">просмотрено</button>
+    </div>
+
+    <div class="anime-card" data-id="jjk">
+        <a href="https://animego.me/anime/rab-specotryada-demonicheskogo-goroda-2-2904" target="_blank">
+            <h2 class="anime-title">раб спецотряда</h2>
+        </a>
+        <img src="https://media1.tenor.com/m/kuY8qPq5LhQAAAAC/renyamashiro.gif">
+        <button class="watch-btn">просмотрено</button>
+    </div>
+
+    <div class="anime-card" data-id="ds">
+        <a href="https://animego.me/anime/prigovorennyy-byt-geroem-tyuremnye-zapisi-devyat-tysyach-chetvertogo-shtrafnogo-otryada-geroev-2902" target="_blank">
+            <h2 class="anime-title">приговоренный</h2>
+        </a>
+        <img src="https://media1.tenor.com/m/1f7G1q1NXasAAAAd/判處勇者刑-sentenced-to-be-a-hero.gif">
+        <button class="watch-btn">просмотрено</button>
+    </div>
+
+    <div class="anime-card" data-id="ds">
+        <a href="https://animego.me/anime/isekai-ojisan-2058" target="_blank">
+            <h2 class="anime-title">перерождение</h2>
+        </a>
+        <img src="https://media1.tenor.com/m/CF0usdAnFpYAAAAd/isekai-ojisan-isekai-ojisan-laugh.gif">
+        <button class="watch-btn">просмотрено</button>
+    </div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll(".anime-card");
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+let currentFilter = "list";
+
+function updateView() {
+    cards.forEach(card => {
+        const id = card.getAttribute("data-id");
+        const isWatched = localStorage.getItem(id) === "watched";
+
+        if (currentFilter === "list" && !isWatched) {
+            card.style.display = "block";
+        } 
+        else if (currentFilter === "watched" && isWatched) {
+            card.style.display = "block";
+        } 
+        else {
+            card.style.display = "none";
+        }
+    });
+}
+
+cards.forEach(card => {
+    const id = card.getAttribute("data-id");
+    const button = card.querySelector(".watch-btn");
+    const title = card.querySelector(".anime-title");
+
+    if (localStorage.getItem(id) === "watched") {
+        card.classList.add("watched");
+        button.textContent = "просмотрено";
+    }
+
+    button.addEventListener("click", () => {
+        if (localStorage.getItem(id) === "watched") {
+            localStorage.removeItem(id);
+            card.classList.remove("watched");
+            button.textContent = "просмотрено";
+        } else {
+            localStorage.setItem(id, "watched");
+            card.classList.add("watched");
+            button.textContent = "просмотрено";
+        }
+
+        updateView();
+    });
+});
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelector(".active").classList.remove("active");
+        btn.classList.add("active");
+
+        currentFilter = btn.getAttribute("data-filter");
+        updateView();
+    });
+});
+
+updateView();
+</script>
+
+</body>
+</html>

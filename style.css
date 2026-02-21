@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("бг.webp") no-repeat center center fixed;
+    background-size: cover;
+    color: #5a493d;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(143, 110, 57, 0.2);
+}
+
+.card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 15px 30px rgba(150, 112, 56, 0.4);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.anime-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.anime-card {
+    background: rgba(0, 0, 0, 0.396);
+    padding: 20px;
+    border-radius: 25px;
+
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(157, 0, 255, 0.723);
+    transition: 0.3s;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+
+.anime-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #ad3affb6;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    background: #5d30793b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #6704b395;
+    color: white;
+}
+.watch-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #5f3a7667;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.watch-btn:hover {
+    background: #9000ff;
+    color: white;
+}
+
+.watched {
+    opacity: 0.7;
+}
+
+.watched .anime-title {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.anime-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
+.anime-card:nth-child(1) { animation-delay: 0.1s; }
+.anime-card:nth-child(2) { animation-delay: 0.2s; }
+.anime-card:nth-child(3) { animation-delay: 0.3s; }
+.anime-card:nth-child(4) { animation-delay: 0.4s; }
+.anime-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.top-panel {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.542);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgb(140, 0, 215);
+    z-index: 1000;
+}
+
+.filters {
+    margin: 15px 0;
+}
+
+.filter-btn {
+    border: none;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 20px;
+    background: #8655a79c;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #8555a79c;
+    color: white;
+}
+
+.filter-btn.active {
+    background: #724a939c;
+    color: white;
+}
